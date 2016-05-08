@@ -14,12 +14,36 @@ bool less_address(Entity a,Entity b)
         return false;
 }
 
+bool max_size(Entity a,Entity b)
+{
+    if(a.get_size() > b.get_size())
+        return true;
+    else
+        return false;
+}
+
+
 bool less_size(Entity a,Entity b)
 {
     if(a.get_size() < b.get_size())
         return true;
     else
         return false;
+}
+QString Memory::print(Memory m)
+{
+    std::sort(m.mem.begin(),m.mem.end(),less_address);
+    QString addre;
+    QList<Entity>::iterator it=m.mem.begin();
+    for(;it!=m.mem.end();it++)
+    {
+        addre+= QString::number(it->get_base_address())+'\n';
+        addre+= "        "+ (it->get_name())+'\n';
+
+   }
+    it--;
+    addre+= QString::number(it->get_base_address()+it->get_size())+'\n';
+    return addre;
 }
 /*
 Memory::Memory(QList<Entity> holes)
@@ -124,4 +148,8 @@ void Memory::remove_entity(QString s)
 void Memory::push_element(Entity x)
 {
     mem.push_back(x);
+}
+void Memory::reset()
+{
+    mem.clear();
 }

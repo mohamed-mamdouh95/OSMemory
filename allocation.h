@@ -8,8 +8,8 @@
 class Allocation
 {
 public:
-    void FirstFit(Memory &m,Entity x);
-    void BestFit(Entity x);
-    void WorstFit(Memory &m,Entity x);
+    static void FirstFit(Memory &m,Entity x);
+   static  void BestFit(Memory &m,Entity x );
+    static void WorstFit(Memory &m,Entity x);
 };
 #endif // ALLOCATION_H

@@ -7,19 +7,23 @@
 
 
 bool less_address(Entity a,Entity b);
+bool max_size(Entity a,Entity b);
 bool less_size(Entity a,Entity b);
+
 class Memory
 {
 
 private:
-   //QList<Entity> mem;
+   QList<Entity> mem;
 public:
-    QList<Entity> mem;
     void push_element(Entity x);
    // Memory(QList<Entity> holes);
     void remove_entity(QString s);
    //-------
+    void reset();
     friend class Allocation;
+    static QString print(Memory m);
+
 
 };
 
